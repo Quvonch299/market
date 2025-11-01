@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Allproducts() {
      const [All, setAll] = useState([]);
@@ -19,7 +20,7 @@ export default function Allproducts() {
   }, []);
 
   return (
-    <div className='' >
+    <Link to='/ADD'  className='' >
     {
         All.length>0?All.map((post)=>{
 return<div key={post.id}>
@@ -42,7 +43,7 @@ return<div key={post.id}>
           <span className="text-xl font-bold text-gray-900">{Math.round(post.price)}$</span>
 
           <button className="bg-black text-white px-5 py-2 rounded-2xl text-sm font-medium hover:bg-gray-900 transition">
-            Add to Cart
+            VIEW MORE
           </button>
         </div>
       </div>
@@ -51,6 +52,6 @@ return<div key={post.id}>
         }):''
     }
         
- </div>
+ </Link>
   )
 }
