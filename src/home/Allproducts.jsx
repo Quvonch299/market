@@ -1,29 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import AddCart from './AddCart';
 
 export default function Allproducts() {
-     const [All, setAll] = useState([]);
-
-  const GetData = async () => {
-    try {
-      const res = await axios.get("https://fakestoreapi.com/products");
-      setAll(res.data);
-      console.log(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    GetData();
-  }, []);
+      const [All, setAll] = useState([]);
+      const [select,setSelect] = useState()
+      const [modal,setModal] = useState(false)
+    
+      const GetData = async () => {
+        try {
+          const res = await axios.get("https://fakestoreapi.com/products");
+          setAll(res.data);
+          console.log(res.data);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+    
+      useEffect(() => {
+        GetData();
+      }, []);
+      useEffect(()=>{
+        console.log(select);
+        
+      },[select])
+      const OnClose = function(){
+        setModal(false)
+        setSelect(0)
+      }
 
   return (
-    <Link to='/ADD'  className='' >
+    <div className='' >
     {
-        All.length>0?All.map((post)=>{
-return<div key={post.id}>
+
+       All.length>0?All.map((post)=>{
+        return<div key={post.id} onClick={()=>{setSelect(post.id),setModal(true) }}>
        <div className="mb-4 relative bg-white/40 backdrop-blur-xl rounded-3xl shadow-lg overflow-hidden border border-white/30 hover:shadow-2xl transition-all duration-300 p-5">
         
         <div className="w-full h-56 rounded-2xl bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center overflow-hidden">
@@ -42,16 +53,21 @@ return<div key={post.id}>
         <div className="mt-5 flex items-center justify-between">
           <span className="text-xl font-bold text-gray-900">{Math.round(post.price)}$</span>
 
-          <button className="bg-black text-white px-5 py-2 rounded-2xl text-sm font-medium hover:bg-gray-900 transition">
+          <button   className="bg-black text-white px-5 py-2 rounded-2xl text-sm font-medium hover:bg-gray-900 transition">
             VIEW MORE
           </button>
         </div>
       </div>
-    
-</div>
-        }):''
+
+        </div>
+       }):''
     }
-        
- </Link>
+    {
+ modal &&    <AddCart OnClose={OnClose} select={select} />
+    }
+      
+
+</div>
+    
   )
 }

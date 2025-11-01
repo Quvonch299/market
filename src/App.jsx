@@ -3,6 +3,7 @@ import Header from './home/Header'
 import Grid from './home/Grid'
 import { Route, Routes } from 'react-router-dom'
 import AddCart from './home/AddCart'
+import Savat from './home/Savat'
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route path='/' element={<Header />} />
         <Route path='/grid' element={<Grid />} />
         <Route path='/ADD' element={<AddCart />} />
+        <Route path='/savat' element={<Savat/>}/>
       </Routes>
     </div>
   )

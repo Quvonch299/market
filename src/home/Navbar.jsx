@@ -1,11 +1,10 @@
-import React from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { FaRegHeart, FaRegNewspaper } from 'react-icons/fa'
 import { MdOutlinePeopleAlt } from 'react-icons/md'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({setLoginModal}) {
     return (
         <div className='max-w-7xl mx-auto'>
             <div className="flex justify-between items-center py-3">
@@ -21,17 +20,17 @@ export default function Navbar() {
                  <CiSearch />
                  </div>
                 <div className="icon"></div>
-                <div className='flex items-center gap-3'>
+                <Link to='/savat' className='flex items-center gap-3'>
                     <RiShoppingBagLine />
                     <a href="#">Savat</a>
-                </div  >
+                </Link  >
                 <div className='flex items-center gap-3'>
                     <FaRegHeart />
                     <a href="#">Sevimlilar</a>
                 </div>
                 <div className='flex items-center gap-3'>
                     <MdOutlinePeopleAlt />
-                    <a href="#">Kirish</a>
+                    <button onClick={ ()=>{setLoginModal(true)}} href="#">Kirish</button>
                 </div>
             </div>
         </div>
