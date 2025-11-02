@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carigorya from "../ui/Carigorya";
-
-const Catigorya = [
-  "https://i0.wp.com/gamerz.kz/wp-content/uploads/2025/01/OIP-18.jpg?fit=600%2C600&ssl=1",
-  "https://minapi.beemarket.uz/prod-media/productImages/1761565388pBlfPJWxNtIX.webp",
-  "https://shop.mandodiao.com/cdn/shop/products/Koh1CIj4.png?v=1650439454",
-  "https://img.birbir.uz/i/400x400-fit/files/ac/d0/e3e963cdd3192665440c78814e6c.jpg",
-];
+import axios from "axios";
+ 
 
 export default function Hero() {
+const[Catigorya,setCatigorya] = useState([])
+
+const getData = async function(){
+  try{
+    const res = await axios.get('https://fakestoreapi.com/products')
+    console.log(res.data);
+   setCatigorya(res.data);
+    
+  }catch(e){
+    console.log(e);
+    
+  }
+}
+useEffect(()=>{
+  getData()
+},[])
+
   return (
     <div className="max-w-7xl mx-auto p-4">
       
@@ -25,10 +37,16 @@ export default function Hero() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-8 place-items-center">
-        {Catigorya.map((item, index) => (
-          <Carigorya key={index} Catigorya={Catigorya} />
-        ))}
+      <div className="flex gap-4 overflow-x-auto scrollbar-hide p-2 ">
+         {
+          Catigorya.length>0?Catigorya.map((post)=>{
+             return<div key={post.id}>
+               <Carigorya image={post.image}  />
+              
+             </div>
+          }):''
+         }
+        
       </div>
     </div>
   );
