@@ -22,7 +22,7 @@ export default function Navbar({setLoginModal}) {
                 <div className="icon"></div>
                 <Link to='/savat' className='flex items-center gap-3'>
                     <RiShoppingBagLine />
-                    <a href="#">Savat</a>
+                    <p>Savat</p>
                 </Link  >
                 <div className='flex items-center gap-3'>
                     <FaRegHeart />

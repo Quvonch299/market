@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Hero from './Hero'
 import axios from 'axios'
 import Login from './Login';
+import User from './User';
 
 export default function Header() {
   const [market, setMarket] = useState([]);
@@ -30,6 +31,7 @@ export default function Header() {
     <div>
       <Navbar setLoginModal={setLoginModal} />
       <Hero products={market} />
+        <User />
 
       {
         loginModal&&<Login setOnclose={setOnclose}/>
