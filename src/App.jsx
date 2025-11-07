@@ -6,17 +6,19 @@
   import Users from './home/Users'
   import User from './home/User'
   import UsersModal from './home/UsersModal'
+import Clothing from './home/Clothing'
+
 
   export default function App() {
     return (
-      <div>
+      <div className='  '>
         <Routes>
           <Route path='/' element={<Header />} />
           <Route path='/grid' element={<Grid />} />
           <Route path='/ADD' element={<AddCart />} />
           <Route path='/savat' element={<Savat />} />
           <Route path='/userbtn' element={<Users />} />
-       
+       <Route path='/clothing' element={<Clothing/>}/>
 
         </Routes>
 

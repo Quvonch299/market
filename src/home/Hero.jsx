@@ -26,7 +26,7 @@ useEffect(()=>{
       
       <img
         className="rounded-2xl w-full h-[350px] object-cover shadow-lg"
-        src="https://web.openshop.uz/storage/uploads/sliders/202509/5huRSva1p37cGOlsGTCDss4w6TDUe5TF.jpg"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjy-XkYnTJ4vSEU0C1haOsgf_KHQ_JiyWpxquxykRiPXt3KmDvLS23lv1exwisqG2uYyINxF6O_FPhBJ9OaVQLerySGUdk4HsMFb7sTvZ_yb2yRvDiJGPuVYwBofpU0_zbwORTQmdfmraYD/s1890/mobile+shop+flex+banner+psd.PNG"
         alt="Banner"
       />
 
@@ -37,15 +37,8 @@ useEffect(()=>{
         </h2>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto scrollbar-hide p-2 ">
-         {
-          Catigorya.length>0?Catigorya.map((post)=>{
-             return<div key={post.id}>
-               <Carigorya image={post.image}  />
-              
-             </div>
-          }):''
-         }
+      <div className="flex justify-center ">
+        <Carigorya/>
         
       </div>
     </div>

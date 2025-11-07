@@ -1,7 +1,6 @@
 import React from 'react'
 import Allproducts from './Allproducts'
 import Navbar from './Navbar'
-
 export default function Grid() {
   return (
     <div  className='max-w-7xl mx-auto'>
